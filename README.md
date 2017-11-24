@@ -15,7 +15,7 @@
 ### elementAt
 수신 받기 원하는 `element`의 `index`를 제외한 나머지의 모든 `element`들은 무시합니다. 다이어그램에서 `index`로 2를 지정하면 세 번째 `element`만 통과되고 나머지는 무시됩니다.
 
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/elementAt)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/elementAt.png)
 
 ```swift
 let subject = PublishSubject<Int>()
@@ -36,7 +36,7 @@ subject.onNext(3)
 
 ### filter
 `filter`는 각 `element`에 적용되어 `predicate`에 해당하는 `element`만 통과하도록 허용합니다.
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/filter)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/filter.png)
 
 ```swift
 let disposeBag = DisposeBag()
@@ -62,7 +62,7 @@ Observable.of(1, 2, 3, 4, 5, 6)
 
 ### skip
 특정 `element` 수를 건너 뛸 필요가 있을 때 사용한다. 아래 다이어그램을 보면 건너 뛸 `element`의 수를 2로 지정하면 2개의 `element`를 제외한 나머지 `element`들을 수신 받을 수 있다.
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/filter)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/skip.png)
 
 
 ```swift
@@ -104,7 +104,7 @@ Observable.of(2, 2, 3, 2, 4, 4)
 
 ### skipUntil
 다른 trigger Observable이 element를 방출하기 전까지, 원본 Observable이 방출하는 element들을 건너뛸 수 있다.
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/skipUntil)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/SkipUntil.png)
 
 ```swift
 let disposeBag = DisposeBag()
@@ -137,7 +137,7 @@ D
 
 ### take
 
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/take)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/take.png)
 
 ```swift
 
@@ -157,7 +157,7 @@ D
 ```
 
 ### takeUntil
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/takeUntil)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/takeUntil.png)
 
 ```swift
 let disposeBag = DisposeBag()
@@ -184,7 +184,7 @@ subject.onNext("4")
 ```
 
 ### takeLast
-![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/images/takeLast)
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images//takeLast.png)
 
 ## Distinct operators
 * `distinctUntilChanged
