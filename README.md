@@ -1,4 +1,4 @@
-# Operators
+# Filtering Operators
 
 ## Ignoring Operators
 * `ignoreElements`
@@ -205,8 +205,84 @@ B
 A
 ```
 
+# Transforming Operators
 
+## toArray
+`toArray`은 `Observable`의 `element`들을 배열로 변환하여 구독자에게 `.next` event에 배열을 담아  내보냅니다.
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/toArray.png)
 
+```swift
+let disposeBag = DisposeBag()
+
+Observable.of(1, 2, 3)
+  .toArray()
+  .subscribe(onNext: { print($0) })
+  .disposed(by: disposeBag)
+```
+```swift
+"[1, 2, 3]"
+```
+
+## map
+`map`은 swift 표준 `map`과 동일 하지만 단지 Observable의 operator라는 점만 다르다.
+![Alt text](https://github.com/audrl1010/RxSwiftAnalysis/blob/master/images/map.png)
+
+```swift
+let disposeBag = DisposeBag()
+Observable.of(1, 2, 3)
+  .map { $0 * 2 }
+  .subscribe(onNext: { print($0) })
+  .disposed(by: disposeBag)
+```
+```swift
+2
+4
+6
+```
+## flatMap
+`Observable`의 각 `element`를 새로운 `Observable`로 생성시키고, 생성된 각각의 `Observable`들의 element들을 발행하는 것을 하나의  `Observable`에 합쳐서 내보냅니다.
+![Alt text](http://reactivex.io/documentation/operators/images/flatMap.c.png)
+
+```swift
+let disposeBag = DisposeBag()
+
+let sequence1 = Observable.of(1, 2, 3)
+let sequence2 = Observable.of(4, 5, 6)
+
+sequence1
+  .flatMap { (x: Int) -> Observable<Int>
+    print("\($0)\n")
+    return sequence2
+  }
+  .subscribe(onNext: { print($0) })
+  .disposed(by: disposeBag)
+```
+
+```swift
+1
+
+4
+5
+6
+
+2
+
+4
+5
+6
+
+3
+
+4
+5
+6
+```
+
+## flatMapFirst
+flatMap와 똑같이 새로운 Observable을 만들지만, 새로운 Observable은 동작이 다 끝날 때 까지 새로 발행된 아이템을 무시합니다.
+
+## flatMapLatest
+새로운 Observable을 만들고, 새로운 Observable이 동작 하는 중에 새로 발행된 아이템이 전달되면, 만들어진 Observable은 dispose하고, 새로운 Observable을 만들고 발행합니다.
 
 
 
